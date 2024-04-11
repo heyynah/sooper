@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Resolution</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="img/icon.png">
+</head>
+
+<header>
+    <img src="img/full-logo.png">
+</header>
+
+<body>
+    <div class="title-container">
+        <h1>Super Image Resolution</h1>
+        <p>This is a super image resolution program implementation. Upload a PNG image to be upscaled.</p>
+        <p><i>Note that this process may take a while to load due to the use of machine learning.</i></p>
+    </div>
+
+    <div class="images-container">
+        <div class="hero-input">
+            <label for="input-file" id="drop-area">
+                <input type="file" accept="image/png" id="input-file" hidden>
+                <div id="img-view">
+                    <img src="img/upload.png">
+                    <p>Drag and drop or click here to upload image</p>
+                    <span>Upload any images from desktop</span>
+                </div>
+            </label>
+            <div class="buttons">
+                <button id="cancel-button">
+                    Cancel
+                </button>
+                <button id="submit-button">
+                    Submit
+                </button>
+            </div>
+        </div>
+        <div class="hero-output">
+            <div id="resolved-img-view">
+                <img src="">
+            </div>
+            <div class="buttons">
+                <button id="download-button">
+                    Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
