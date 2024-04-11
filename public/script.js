@@ -48,11 +48,19 @@ function submitImage() {
         })
         .then(response => response.json())
         .then(data => {
-            const processedImageUrl = `${serverUrl}/processed_images/${inputFile.files[0].name.replace('.png', '')}_rlt.png`; // Construct URL for processed image
-            resolvedView.style.backgroundImage = `url(${processedImageUrl})`;
-            resolvedView.style.border = "2px solid #bbb5ff";
+            if (data.resultsPath) {
+                const processedImageUrl = `${serverUrl}/processed_images/${path.basename(data.resultsPath)}`; // Construct URL for processed image
+                resolvedView.style.backgroundImage = `url(${processedImageUrl})`;
+                resolvedView.style.border = "2px solid #bbb5ff";
+            } else {
+                console.error('Error: No results path returned from the server');
+                alert('Error processing the image. Please try again.');
+            }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while processing the image. Please try again later.');
+        });
     }
 }
 

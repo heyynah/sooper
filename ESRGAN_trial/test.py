@@ -35,4 +35,11 @@ for path in glob.glob(test_img_folder):
         output = model(img_LR).data.squeeze().float().cpu().clamp_(0, 1).numpy()
     output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
     output = (output * 255.0).round()
-    cv2.imwrite('ESRGAN_trial/results/{:s}_rlt.png'.format(base), output)
+    # Assuming 'output' is the processed image and 'base' is the base filename
+    output_folder = 'ESRGAN_trial/results'
+    base_filename, extension = os.path.splitext(base)
+    output_filename = f'{base_filename}_rlt{extension}'
+    output_path = os.path.join(output_folder, output_filename)
+
+    # Write the processed image to the output file
+    cv2.imwrite(output_path, output)
